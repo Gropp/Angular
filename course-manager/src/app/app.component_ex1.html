@@ -1,0 +1,13 @@
+<!-- interpolando os atributos definidos no app.component.ts -->
+{{ title }}
+<br/>
+{{ name }}
+<br/>
+<!-- para usar o ngModel precisamos importar esse componente que pertence aos formularios no app.module.ts -->
+<!-- o ngmodel faz um bind para um input de alguma propriedade do componente -->
+<!-- entre colchetes só mostra a propriedade one-way data bind -->
+<input [ngModel]="name" name="name">
+<br/>
+<!-- entre colchetes e parenteses mostra e altera a propriedade two-way data bind -->
+<!-- se vc mudar esse valor no form, muda em todos os lugares que foi usado a variavel name -->
+<input [(ngModel)]="name" name="name">
