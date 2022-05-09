@@ -1,1 +1,49 @@
 <h2> Course List </h2>
+
+<!-- criando um campo de filtro -->
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Filter By</label>
+    <div class="col-sm-10">
+        <!-- two-way data bind (le e altera a variavel [()]) -->
+        <!-- quer pegar o input e output -->
+        <input [(ngModel)]="filter" class="form-control" type="text">
+    </div>
+</div>
+<!-- table-striped é um css do bootstrap que faz uma tabela listrada -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Code</th>
+            <th>Release Date</th>
+            <th>Duration</th>
+            <th>Rating</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- o ngFor faz um loop no array, a variavel local course, vai correr o array course
+        criado no course-list.component.ts e vai montar a tabela -->
+        <!-- As variaveis chegam por interpolacao {{variavel}} -->
+        <tr *ngFor="let course of filteredCourses">
+            <!-- <td>{{ course.imageUrl}}</td> -->
+            <!-- atributo html tem que estar entre colchetes para o angular entender -->
+            <td><img [src]="course.imageUrl" width="40px" height="40px" alt="cursos" /></td>
+            <td>{{ course.name }}</td>
+            <td>{{ course.price }}</td>
+            <td>{{ course.code }}</td>
+            <td>{{ course.releaseDate }}</td>
+            <td>{{ course.duration }} min</td>
+            <!-- <td>{{ course.rating }}</td>  passa o valor-->
+            <!-- vamos usar o componente star para mostrar estrelas e nao o valor -->
+            <!-- chama o componente usando a tag criada como referencia (seletor) -->
+            <td>
+                <!-- chama a propriedade rating do component com o valor rating do array course.rating do course-list.component.ts -->
+                <app-star [rating]="course.rating"></app-star>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

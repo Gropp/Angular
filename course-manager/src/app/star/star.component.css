@@ -1,0 +1,4 @@
+.crop {
+    /* propriedade para esconder o que extrapolar o tamanho da div */
+    overflow: hidden;
+}

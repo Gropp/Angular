@@ -1,0 +1,11 @@
+<!-- Passa para o tamanho da div o atributo definido no componente star.component.ts (proporcao) na variavel starWidth, entre [] e no css configuramos a class crop para que o overflow, o que extrapolar o tamanho da div seja escondido, dando o efeito da qtdade das estrelas ser igual ao valor do rating -->
+<div class="crop" [style.width.px] = 'starWidth' [title]="rating">
+    <div style="width: 100px;">
+        <!-- mostra as estrelas dentro da td rating -->
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    </div>
+</div>
