@@ -1,4 +1,10 @@
+<!-- adicionando o componente nav-bar -->
+<!-- declarar essa tag no app-modules.ts -->
+<app-nav-bar></app-nav-bar>
 <!-- adicionando uma classe do bootstrap -->
-<div class="container">
-    <app-course-list></app-course-list>
+<div class="container mt-4">
+    <!-- tag do angular que define o switch das rotas dos componentes -->
+    <router-outlet></router-outlet>
+    <!-- como usamos rotas nao usa mais essa tab do componente -->
+    <!-- <app-course-list></app-course-list> -->
 </div>
