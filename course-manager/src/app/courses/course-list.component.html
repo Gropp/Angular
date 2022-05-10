@@ -46,7 +46,12 @@
                 <!-- chama a propriedade rating do component com o valor rating do array course.rating do course-list.component.ts -->
                 <app-star [rating]="course.rating"></app-star>
             </td>
-            <td></td>
+            <td>
+                <!-- criando rotas para componentes - angular -->
+                <!-- sempre chamando as propriedades entre [] -->
+                <!-- path + argumento, neste caso o id -->
+                <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary">Edit</a>
+            </td>
         </tr>
     </tbody>
 </table>

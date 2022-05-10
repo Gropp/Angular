@@ -1,7 +1,8 @@
 <!-- Template do componente nave-bar -->
 <!-- chama algumas classes do bootstrap -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">Course Manager</a>
+    <!-- usando a propriedade routerlik para navegar ao inves do href -->
+    <a [routerLink]="['/courses']" class="navbar-brand">Course Manager</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +12,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a href="#" class="nav-link">Courses</a>
+                <!-- usando o routerLinkActive para destacar o link no html -->
+                <a [routerLink]="['/courses']" routerLinkActive="active" class="nav-link">Courses</a>
             </li>
         </ul>
     </div>

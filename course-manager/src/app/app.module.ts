@@ -9,6 +9,7 @@ import { StarComponent } from './star/star.component';
 import { ReplacePipe } from './pipe/replace.pipe';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { Error404Component } from './error-404/error-404.component';
+import { CourseInfoComponent } from './courses/course-info.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { Error404Component } from './error-404/error-404.component';
     StarComponent,
     ReplacePipe,
     NavBarComponent,
-    Error404Component
+    Error404Component,
+    CourseInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,11 @@ import { Error404Component } from './error-404/error-404.component';
       {
         // aqui nos dizemos a qual componente esta vinculada a rota
         path: 'courses', component: CourseListComponent
+      },
+        // rota para o componente course-info
+        // essa rota recebe um argumento do componente, entao tem que identificar o argumento que é o id
+      {
+        path: 'courses/info/:id', component: CourseInfoComponent
       },
       {
         // outra rota nativa é o ** - que é o 404, nao encontrou
