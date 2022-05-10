@@ -33,8 +33,11 @@
             <td><img [src]="course.imageUrl" width="40px" height="40px" alt="cursos" /></td>
             <td>{{ course.name }}</td>
             <td>{{ course.price }}</td>
-            <td>{{ course.code }}</td>
-            <td>{{ course.releaseDate }}</td>
+            <!-- é possivel usar mais de um pipe -->
+            <!-- usando um pipe customizado replace - que foi declarado no app.module.ts -->
+            <td>{{ course.code | lowercase | replace: '-':'_'}}</td>
+            <!-- usando o pipe para formatar as variaveis -->
+            <td>{{ course.releaseDate | date: 'dd/MM/yyyy' }}</td>
             <td>{{ course.duration }} min</td>
             <!-- <td>{{ course.rating }}</td>  passa o valor-->
             <!-- vamos usar o componente star para mostrar estrelas e nao o valor -->
