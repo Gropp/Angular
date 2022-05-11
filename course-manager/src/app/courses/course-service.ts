@@ -18,7 +18,8 @@ export class CourseService {
     }
     // funcao que carrega somente UM curso definido pelo id, conforme pusemos na tabela de rotas
     retrieveById(id: number): Course {
-        return COURSES.find((courseItereator: Course) => courseItereator.id === id);
+        return COURSES.find((courseItereator: Course)=>courseItereator.id === id);
+        //find((courseItereator: Course) => courseItereator.id === id);
     }
 }
 

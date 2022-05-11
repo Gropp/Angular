@@ -1,4 +1,26 @@
 <h2>Course Info</h2>
 <!-- Informacao sobre o id do curso selecionado -->
     <!-- Course ID = {{courseId}} -->
-<br/>
+<hr/>
+
+<!-- incluimos uma variavel de template -->
+<form #couserForm="ngForm">
+    <!-- tags e classes do bootstrap -->
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Name:</label>
+        <div class="col-sm-10">
+            <!-- two-way data bind (le e altera a variavel [()]) -->
+            <!-- quer pegar o input e output -->
+            <!-- passa os atributos ngModel para a variavel do template -->
+            <input [(ngModel)]="course.name" required name="name" #courseName="ngModel" [ngClass]="{'is-invalid': courseName.invalid}" class="form-control" alt="input" title="course">
+            <!-- variaveis de template -->
+            <!-- {{ courseName.value }}
+                 {{ courseName.valid }}
+                 {{ courseName.invalid }} -->
+        </div>
+        <div>
+            
+        </div>
+</div>
+
+</form>
