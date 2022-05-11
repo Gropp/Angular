@@ -24,6 +24,7 @@ import { CourseInfoComponent } from './courses/course-info.component';
   imports: [
     BrowserModule,
     FormsModule,
+    // propriedade de rotas passando pelo root, raiz do sistema
     RouterModule.forRoot([
       {
         // rotas nativas - sem nada, entao ele direciona para o inicio da aplicacao

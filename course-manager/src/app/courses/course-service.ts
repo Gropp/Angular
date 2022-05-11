@@ -10,11 +10,16 @@ import { Course } from "./course";
     providedIn: 'root'
 })
 
-// a funcao carrega todo o array e o retorna
+// classe que retorna os "servicos" desse componente
 export class CourseService {
+    // funcao carrega todo o array e o retorna todos os cursos
     retrieveAll(): Course[] {
         return COURSES;
-    } 
+    }
+    // funcao que carrega somente UM curso definido pelo id, conforme pusemos na tabela de rotas
+    retrieveById(id: number): Course {
+        return COURSES.find((courseItereator: Course) => courseItereator.id === id);
+    }
 }
 
 // array das informacoes dos cursos
