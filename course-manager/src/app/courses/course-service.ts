@@ -1,4 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { Course } from "./course";
 
 // classes de serviço nao devem ter variaveis que sejam alteradas em outros metodos
@@ -12,14 +14,41 @@ import { Course } from "./course";
 
 // classe que retorna os "servicos" desse componente
 export class CourseService {
+
+    // criamos uma variavel para dar o caminho do servidor
+    // informacao do arquivo serve.js
+    private courseUrl: string = 'http://localhost:3100/api/courses';
+    // no construtor vamos fazer a injecao do http
+    constructor(private httpClient: HttpClient) {}
+
     // funcao carrega todo o array e o retorna todos os cursos
-    retrieveAll(): Course[] {
-        return COURSES;
+    // ele fica observando a requisicao do tipo curso
+    // observables sao assincronos, pois esperam o sucesso de algo externo para dar retorno
+    retrieveAll(): Observable<Course[]>{
+        // passa no <> o tipo da propriedade
+        // tipo observable - faz a requisicao
+        return this.httpClient.get<Course[]>(this.courseUrl);
+        // return COURSES;
     }
     // funcao que carrega somente UM curso definido pelo id, conforme pusemos na tabela de rotas
-    retrieveById(id: number): Course {
-        return COURSES.find((courseItereator: Course)=>courseItereator.id === id);
-        //find((courseItereator: Course) => courseItereator.id === id);
+    retrieveById(id: number): Observable<Course> {
+        //agora o retorno vem do httpcliente
+        return this.httpClient.get<Course>(`${this.courseUrl}/${id}`);
+        //return COURSES.find((courseIterator: Course) => courseIterator.id === id);
+        //find((courseIterator: Course) => courseIterator.id === id);
+    }
+
+    save(course: Course): Observable<Course> {// void{
+        if(course.id) {
+            // com o uso do httpclient essa rotina alterou
+            // const index = COURSES.findIndex((courseIterator: Course ) => courseIterator.id === course.id);
+            // COURSES[index] = course;
+            // se tiver id - o curso existe - put (atualiza)
+            return this.httpClient.put<Course>(`${this.courseUrl}/${course.id}`, course);
+        } else {
+            // se nao tiver id - o curso nao existe - post (cria um novo)
+            return this.httpClient.post<Course>(`${this.courseUrl}`, course);
+        }
     }
 }
 

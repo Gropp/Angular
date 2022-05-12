@@ -23,10 +23,13 @@ export class CourseListComponent {
 
     ngOnInit(): void {
 
+        // com o servico assincrono, ao iniciar chamamos a funcao criada logo abaixo
+        this.retrieveAll();
         // atribui a propriedade o metodo descrito na classe course-serivce
-        this._courses = this.courseServices.retrieveAll();
+        // como agora a requisicao é html essa linha da erro
+        //this._courses = this.courseServices.retrieveAll();
         // iguala o filro aos cursos
-        this.filteredCourses = this._courses;
+        //this.filteredCourses = this._courses;
 
         // os valores serao injetados atraves da classe de servicos
         // entao esse array direto foi descartado
@@ -53,6 +56,22 @@ export class CourseListComponent {
         // }]
     }
 
+    // com o uso do http cliente assincrono precisao reescrever a funcoes
+    retrieveAll(): void {
+        // o subscribe é por ser assincrono e o serviço é observable
+        this.courseServices.retrieveAll().subscribe({
+            // o courses é o retorno do get da funcao retrieveall
+            // a callback function tem duas funcoes, next (sucesso) e error (falha)
+            // em caso de sucesso next
+            next: courses => {
+                this._courses = courses;
+                // como o servico e assincrono vc coloca o filtro dentro do bloco de sucesso de retorno para evitar que ele aja antes de ter o retorno
+                this.filteredCourses = this._courses;
+            },
+            // em caso de falha error
+            error: err => console.log('Error', err)
+        })
+    }
     // define no componente que lista os cursos a funcao filter chamada pelo ngModel
     // faz um setter do valor para a variavel local _filterBy
     set filter(value: string) {
