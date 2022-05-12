@@ -52,8 +52,8 @@
         </div>
     </div>
     <!-- o disabel testa a variavel de template courseForm, se algum campo tiver erro ele desabilita o botao save - verificar mais informacoes na internet - sempre entre colchetes a propriedade -->
-    <!-- ao clicar no botao o metodo save sera chamado do componente -->
+    <!-- ao clicar no botao o metodo save() sera chamado do componente -->
     <!-- routerlink caminho de volta -->
-    <button [disabled]="courseForm.invalid" type="button" (click)="save" class="btn btn-primary mr-2">Save</button>
-    <button [routerLink]="['/courses']" type="button" class="btn btn-secundario">Back</button>
+    <button [disabled]="courseForm.invalid" type="button" (click)="save()" class="btn btn-primary">Save</button>
+    <button [routerLink]="['/courses']" type="button" class="btn btn-secondary">Back</button>
 </form>
