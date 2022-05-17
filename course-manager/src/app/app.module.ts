@@ -7,8 +7,8 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 //import { StarComponent } from './star/star.component';
 //import { ReplacePipe } from './pipe/replace.pipe';
-import { NavBarComponent } from './core/component/nav-bar/nav-bar.component';
-import { Error404Component } from './error-404/error-404.component';
+//import { NavBarComponent } from './core/component/nav-bar/nav-bar.component';
+//import { Error404Component } from './core/component/error-404/error-404.component';
 import { CourseModule } from './courses/course.module';
 import { CoreModule } from './core/component/core.module';
 //import { CourseInfoComponent } from './courses/course-info.component';
@@ -21,9 +21,9 @@ import { CoreModule } from './core/component/core.module';
     //StarComponent,
     //importado no course module
     //ReplacePipe,
-    // tira do declaration e passa a importar o CoreModule abaixo
+    //tira do declaration e passa a importar o CoreModule abaixo
     //NavBarComponent,
-    Error404Component
+    //Error404Component,
     //importado no modulo novo da aplicacao
     //CourseInfoComponent
   ],
@@ -44,7 +44,7 @@ import { CoreModule } from './core/component/core.module';
         // rotas nativas - sem nada, entao ele direciona para o inicio da aplicacao
         // rota raiz do projeto redireciona para a rota de courses
         path: '', redirectTo: 'courses', pathMatch: 'full'
-      },
+      }//,
       // {
       //   // aqui nos dizemos a qual componente esta vinculada a rota
       //   path: 'courses', component: CourseListComponent
@@ -54,11 +54,12 @@ import { CoreModule } from './core/component/core.module';
       // {
       //   path: 'courses/info/:id', component: CourseInfoComponent
       // },
-      {
-        // outra rota nativa é o ** - que é o 404, nao encontrou
-        // rota de erro
-        path: '**', component: Error404Component
-      }
+      // o tratamento de erro vai para o componente core - pois ele trata os erros de toda a aplicacao
+      // {
+      //   // outra rota nativa é o ** - que é o 404, nao encontrou
+      //   // rota de erro
+      //   path: '**', component: Error404Component
+      // }
     ])
   ],
   providers: [],
