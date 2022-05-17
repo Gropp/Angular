@@ -72,6 +72,20 @@ export class CourseListComponent {
             error: err => console.log('Error', err)
         })
     }
+
+    // metodo para deletar um curso pelo Id - passa o id e o retorno é nulo
+    deleteById(courseId: number): void {
+        this.courseServices.deleteById(courseId).subscribe({
+            // como delete nao tem retorno o next nao tem parametros
+            // joga no console a mensagem de ok
+            // recarrega a listagem - atualiza
+            next:() => {
+                console.log('Deleted with success');
+                this.retrieveAll();
+            },
+            error: err => console.log('Error', err)
+        })
+    }
     // define no componente que lista os cursos a funcao filter chamada pelo ngModel
     // faz um setter do valor para a variavel local _filterBy
     set filter(value: string) {

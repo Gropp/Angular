@@ -38,6 +38,7 @@ export class CourseService {
         //find((courseIterator: Course) => courseIterator.id === id);
     }
 
+    // metodo que salva as alteracoes ou um curso novo
     save(course: Course): Observable<Course> {// void{
         if(course.id) {
             // com o uso do httpclient essa rotina alterou
@@ -49,6 +50,12 @@ export class CourseService {
             // se nao tiver id - o curso nao existe - post (cria um novo)
             return this.httpClient.post<Course>(`${this.courseUrl}`, course);
         }
+    }
+    // deletando um curso - funcão assincrona
+    // a funcao nao retorna nada, somente apaga um registro
+    deleteById(id: number): Observable<any>{
+        // envia para o metodo concatenado a url e o id do curso
+        return this.httpClient.delete<any>(`${this.courseUrl}/${id}`);
     }
 }
 

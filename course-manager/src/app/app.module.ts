@@ -1,48 +1,55 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+//import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { CourseListComponent } from './courses/course-list.component';
-import { StarComponent } from './star/star.component';
-import { ReplacePipe } from './pipe/replace.pipe';
+//import { StarComponent } from './star/star.component';
+//import { ReplacePipe } from './pipe/replace.pipe';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { Error404Component } from './error-404/error-404.component';
-import { CourseInfoComponent } from './courses/course-info.component';
+import { CourseModule } from './courses/course.module';
+//import { CourseInfoComponent } from './courses/course-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CourseListComponent,
-    StarComponent,
-    ReplacePipe,
+    //importado no modulo novo da aplicacao
+    //CourseListComponent,
+    //StarComponent,
+    //importado no course module
+    //ReplacePipe,
     NavBarComponent,
-    Error404Component,
-    CourseInfoComponent
+    Error404Component
+    //importado no modulo novo da aplicacao
+    //CourseInfoComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    //FormsModule,
+    CourseModule,
     // modulo para requisicao HTTP
     HttpClientModule,
+    // propriedade de rotas de moodulos do sistema child
+    RouterModule,
     // propriedade de rotas passando pelo root, raiz do sistema
     RouterModule.forRoot([
+      // com a criacao do modules da aplicacao, as rotas que nao sao default vao para o arquivo de rotas da aplicacao filha
       {
         // rotas nativas - sem nada, entao ele direciona para o inicio da aplicacao
         // rota raiz do projeto redireciona para a rota de courses
         path: '', redirectTo: 'courses', pathMatch: 'full'
       },
-      {
-        // aqui nos dizemos a qual componente esta vinculada a rota
-        path: 'courses', component: CourseListComponent
-      },
-        // rota para o componente course-info
-        // essa rota recebe um argumento do componente, entao tem que identificar o argumento que é o id
-      {
-        path: 'courses/info/:id', component: CourseInfoComponent
-      },
+      // {
+      //   // aqui nos dizemos a qual componente esta vinculada a rota
+      //   path: 'courses', component: CourseListComponent
+      // },
+      //   // rota para o componente course-info
+      //   // essa rota recebe um argumento do componente, entao tem que identificar o argumento que é o id
+      // {
+      //   path: 'courses/info/:id', component: CourseInfoComponent
+      // },
       {
         // outra rota nativa é o ** - que é o 404, nao encontrou
         // rota de erro
