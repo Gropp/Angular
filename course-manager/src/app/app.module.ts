@@ -7,9 +7,10 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 //import { StarComponent } from './star/star.component';
 //import { ReplacePipe } from './pipe/replace.pipe';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './core/component/nav-bar/nav-bar.component';
 import { Error404Component } from './error-404/error-404.component';
 import { CourseModule } from './courses/course.module';
+import { CoreModule } from './core/component/core.module';
 //import { CourseInfoComponent } from './courses/course-info.component';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CourseModule } from './courses/course.module';
     //StarComponent,
     //importado no course module
     //ReplacePipe,
-    NavBarComponent,
+    // tira do declaration e passa a importar o CoreModule abaixo
+    //NavBarComponent,
     Error404Component
     //importado no modulo novo da aplicacao
     //CourseInfoComponent
@@ -31,6 +33,8 @@ import { CourseModule } from './courses/course.module';
     CourseModule,
     // modulo para requisicao HTTP
     HttpClientModule,
+    // importacao do COREMODULE
+    CoreModule,
     // propriedade de rotas de moodulos do sistema child
     RouterModule,
     // propriedade de rotas passando pelo root, raiz do sistema

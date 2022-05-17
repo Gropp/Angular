@@ -50,8 +50,8 @@
                 <!-- criando rotas para componentes - angular -->
                 <!-- sempre chamando as propriedades entre [] -->
                 <!-- path + argumento, neste caso o id -->
-                <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary mr-3">Info</a>
-                <button (click)="deleteById(course.id)" class="btn btn-danger ml-3">Delete</button> 
+                <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary mr-2">Info</a>
+                <button name="button" type="button" (click)="deleteById(course.id)" class="btn btn-danger">Delete</button> 
             </td>
         </tr>
     </tbody>
